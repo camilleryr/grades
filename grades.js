@@ -1,3 +1,5 @@
+// Create an array of random numbers
+
 function randomArray(length, max) {
     return Array.apply(null, Array(length)).map(function() {
         return Math.round((Math.random() * max) + 50);
@@ -10,7 +12,6 @@ console.log("Random Array of Scores")
 console.log(randomScores)
 console.log("")
 
-// const scores = [82, 71, 62, 95, 55, 98, 69, 72, 78, 84, 64, 58, 87, 60]
 const grades = {
     a: 0,
     b: 0,
@@ -18,6 +19,8 @@ const grades = {
     d: 0,
     f: 0
 }
+
+// Assign each score to a letter grade
 
 for (let i = 0; i < randomScores.length; i++) {
     
@@ -47,7 +50,8 @@ console.log(grades);
 console.log("");
 
 
-//Highest and lowest scores 
+//Highest and lowest scores with .sort()
+
 console.log("Highest Score");
 console.log(randomScores.sort(((a, b) => a - b))[randomScores.length-1])
 console.log("");
@@ -56,7 +60,10 @@ console.log("Lowest Score");
 console.log(randomScores.sort(((a, b) => a - b))[0])
 console.log("");
 
-//Most and Least Common grades 
+//Most and Least Common grades
+
+//Stip the # of occurances of each grade and sort to find the highest and lowest value
+
 let incedencesOfLetterGrades = (Object.values(grades).sort((a, b) => a - b))
 
 let highestNumberOfIncedencesOfLetterGrade = incedencesOfLetterGrades[0]
@@ -69,6 +76,8 @@ let lowestNumberOfIncedencesOfLetterGrade = incedencesOfLetterGrades[incedencesO
 
 let mostCommonLetterGrade = []
 let leastCommonLetterGrade = []
+
+// Iterate thought letter grades to find ones that match highest and lowest 
 
 for (key in grades) {
     if (grades[key] === highestNumberOfIncedencesOfLetterGrade) {
@@ -94,6 +103,8 @@ let scoreSet = Array.from(new Set(randomScores))
 
 let incedencesOfGrades = []
 
+// Create an array of objects (score / num of occurances) 
+
 for (var uniqueNumbers = 0; uniqueNumbers < scoreSet.length; uniqueNumbers++) {
     
     let counter = 0
@@ -114,14 +125,14 @@ for (var uniqueNumbers = 0; uniqueNumbers < scoreSet.length; uniqueNumbers++) {
     })
 }
 
+// Create an array of just the number of incences per grade and sort them
+
 let numberOfIncedencesPerGrade = []
 
 for (var index = 0; index < incedencesOfGrades.length; index++) {
     numberOfIncedencesPerGrade.push(incedencesOfGrades[index].quantity)
     
 }
-
-// console.log(numberOfIncedencesPerGrade.sort((a, b) => a - b))
 
 let leastCommon = []
 let mostCommon = []
@@ -130,9 +141,7 @@ let lowestNumberOfIncedences = numberOfIncedencesPerGrade.sort((a, b) => a - b)[
 
 let highestNumberOfIncedences = numberOfIncedencesPerGrade.sort((a, b) => a - b)[numberOfIncedencesPerGrade.length-1]
 
-// console.log(numberOfIncedencesPerGrade)
-// console.log(lowestNumberOfIncedences)
-// console.log(highestNumberOfIncedences)
+// Compare original set of grades agains the highest and lowest number of incedences  
 
 for (var index = 0; index < incedencesOfGrades.length; index++) {
     if (incedencesOfGrades[index].quantity === lowestNumberOfIncedences) {
